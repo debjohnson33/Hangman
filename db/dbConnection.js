@@ -79,3 +79,5 @@ export {
   createAllTables,
   dropAllTables
 };
+
+require('make-runnable');
