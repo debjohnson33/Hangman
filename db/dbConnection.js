@@ -7,7 +7,7 @@ pool.on('connect', () => {
 
 // Create table functions go here
 const createUserTable = () => {
-  const userCreateQuery = `CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, username VARCHAR(100) UNIQUE NOT NULL, score integer DEFAULT 0 NOT NULL, created_on DATE NOT NULL)`;
+  const userCreateQuery = `CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, username VARCHAR(100) UNIQUE NOT NULL, score integer DEFAULT 0 NOT NULL, created_on DATE NOT NULL DEFAULT CURRENT_DATE)`;
 
   pool.query(userCreateQuery)
     .then((res) => {
@@ -21,7 +21,7 @@ const createUserTable = () => {
 };
 
 const createWordTable = () => {
-  const wordCreateQuery = `CREATE TABLE IF NOT EXISTS words (id SERIAL PRIMARY KEY, word VARCHAR(100) NOT NULL, difficulty VARCHAR(10) NOT NULL, created_on DATE NOT NULL)`;
+  const wordCreateQuery = `CREATE TABLE IF NOT EXISTS words (id SERIAL PRIMARY KEY, word VARCHAR(100) NOT NULL, difficulty VARCHAR(10) NOT NULL, created_on DATE NOT NULL DEFAULT CURRENT_DATE)`;
 
   pool.query(wordCreateQuery)
     .then((res) => {

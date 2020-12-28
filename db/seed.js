@@ -12,7 +12,7 @@ const makeWords = () => {
     obj.id = i;
     obj.word = faker.commerce.product();
     obj.difficulty = difficulty[Math.floor(Math.random() * difficulty.length)];
-    obj.created_on = faker.date.recent();
+    obj.created_on = new Date().toISOString().slice(0,10);
     wordsWrite.write(`${obj.id},${obj.word},${obj.difficulty},${obj.created_on}\n`, 'utf8');
   }
 }
@@ -26,8 +26,8 @@ const makeUsers = () => {
     obj.id = i;
     obj.username = faker.internet.userName();
     obj.score = 0;
-    obj.created_on = faker.date.recent();
-    usersWrite.write(`${obj.id},${obj.username},${obj.score},${obj.created_on}`);
+    obj.created_on = new Date().toISOString().slice(0,10);
+    usersWrite.write(`${obj.id},${obj.username},${obj.score},${obj.created_on}\n`);
   }
 }
 
