@@ -21,7 +21,7 @@ const createUserTable = () => {
 };
 
 const createWordTable = () => {
-  const wordCreateQuery = `CREATE TABLE IF NOT EXITS words (id SERIAL PRIMARY KEY, word VARCHAR(100) NOT NULL, difficulty VARCHAR(10) NOT NULL, created_on DATE NOT NULL)`;
+  const wordCreateQuery = `CREATE TABLE IF NOT EXISTS words (id SERIAL PRIMARY KEY, word VARCHAR(100) NOT NULL, difficulty VARCHAR(10) NOT NULL, created_on DATE NOT NULL)`;
 
   pool.query(wordCreateQuery)
     .then((res) => {
