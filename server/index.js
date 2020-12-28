@@ -20,8 +20,11 @@ app.get('/api/users/:username', (req, res) => {
 });
 
 // need enpoint for words ? 3 one for easy, one for medium, one for hard?
-app.get('/api/words', (req, res) => {
-  // send back words
+app.get('/api/words/:difficulty', (req, res) => {
+  db.getWords(req.params.difficulty, (err, results) => {
+    console.log(`Getting ${req.params.difficulty} words`);
+    err ? console.log(err) : res.send(results);
+  })
 })
 
 // ?? any other endpoints?
