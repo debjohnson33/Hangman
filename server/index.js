@@ -27,8 +27,13 @@ app.get('/api/words/:difficulty', (req, res) => {
   })
 })
 
-// ?? any other endpoints?
 // post for adding user
+app.post('/api/users/:username', (req, res) => {
+  db.addUser(req.params.username, (err, results) => {
+    console.log(`Add ${req.params.username} to users`);
+    err ? console.log(err) : res.send(results);
+  })
+})
 // post for adding word
 
 app.listen(port, () => {
