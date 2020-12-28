@@ -34,7 +34,16 @@ app.post('/api/users/:username', (req, res) => {
     err ? console.log(err) : res.send(results);
   })
 })
+
 // post for adding word
+app.post('/api/words', (req, res) => {
+  const word = req.body.word;
+  const difficulty = req.body.difficulty;
+  db.addWord(word, difficulty, (err, results) => {
+    console.log(`Added ${word} with ${difficulty} difficulty`);
+    err ? console.log(err) : res.send(results);
+  });
+});
 
 app.listen(port, () => {
   console.log(`Hangman app is listening at http://localhost:${port}`);

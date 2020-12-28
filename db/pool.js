@@ -41,12 +41,25 @@ const addUser = (username, callback) => {
     } else {
       callback(null, res);
     }
-  })
+  });
+};
+
+const addWord = (word, difficulty, callback) => {
+  const today = new Date().toISOString().slice(0,10);
+  const addWordQuery = `INSERT INTO words(word, difficulty, created_on) VALUES ('${word}', '${difficulty}', '${today}');`;
+  pool.query(addWordQuery, (err, res) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, res);
+    }
+  });
 }
 
 module.exports = {
   pool,
   getUser,
   getWords,
-  addUser
+  addUser,
+  addWord
 };
