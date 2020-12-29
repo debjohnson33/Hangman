@@ -1,13 +1,26 @@
 import React from 'react';
-//const empty = require('../../public/images/empty.jpg');
+import HangmanPic from './components/HangmanPic.jsx';
 
-const App = () => {
-  return (
-    <div>
-      <h1>Hangman App!</h1>
-      <img src="https://hangman-pics.s3.us-east-2.amazonaws.com/empty.jpg" alt="hangman scaffold" />
-    </div>
-  )
+const hangmanpics = ["https://hangman-pics.s3.us-east-2.amazonaws.com/empty.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/first_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/second_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/third_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/fourth_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/fifth_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/sixth_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/seventh_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/eighth_wrong_guess.jpg"];
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentPic: hangmanpics[0]
+    }
+  }
+
+
+
+  render () {
+    return (
+      <div>
+        <h1>Hangman App!</h1>
+        <HangmanPic pic={this.state.currentPic} />
+      </div>
+    )
+  }
 }
 
 
