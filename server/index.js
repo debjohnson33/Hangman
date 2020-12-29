@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const port = 3000;
 const db = require('../db/pool.js');
 
@@ -9,7 +10,7 @@ const db = require('../db/pool.js');
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-//app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '../public/dist')));
 
 // need endpoint for user
 app.get('/api/users/:username', (req, res) => {
