@@ -4,7 +4,7 @@ module.exports = {
   entry: path.join(__dirname, '/client/src/index.jsx'),
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
+    path: path.resolve(__dirname, 'public/dist')
   },
   watch: true,
   module: {
