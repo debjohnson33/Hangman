@@ -20,21 +20,29 @@ app.get('/api/users/:username', (req, res) => {
   })
 });
 
+app.get('/api/words/all', (req, res) => {
+  db.getAllWords((err, results) => {
+    console.log(`Getting all words`);
+    err ? console.log(err) : res.send(results);
+  });
+});
+
 // need enpoint for words ? 3 one for easy, one for medium, one for hard?
 app.get('/api/words/:difficulty', (req, res) => {
   db.getWords(req.params.difficulty, (err, results) => {
     console.log(`Getting ${req.params.difficulty} words`);
     err ? console.log(err) : res.send(results);
   })
-})
+});
+
 
 // post for adding user
 app.post('/api/users/:username', (req, res) => {
   db.addUser(req.params.username, (err, results) => {
     console.log(`Add ${req.params.username} to users`);
     err ? console.log(err) : res.send(results);
-  })
-})
+  });
+});
 
 // post for adding word
 app.post('/api/words', (req, res) => {
