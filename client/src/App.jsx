@@ -32,9 +32,17 @@ class App extends React.Component {
     console.log(username);
     const user = {username: username, score: 0};
     e.preventDefault();
-    this.setState({
-      currentUser: user
-    });
+    axios.post(`http://localhost:3000/api/users/${username}`, user)
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          currentUser: user
+        });
+      })
+      .catch(err => {
+        console.error('There was an error: ', err);
+      })
+
   }
 
   render () {

@@ -18,6 +18,9 @@ class UserForm extends React.Component {
   submit(e) {
     e.preventDefault();
     this.props.onSubmit(e, this.state.user);
+    this.setState({
+      user: ''
+    });
   }
 
   render() {
@@ -27,6 +30,7 @@ class UserForm extends React.Component {
         <input
           type="text"
           name="username"
+          value={this.state.user}
           onChange={this.handleChange}
         />
         <input type="submit" />
