@@ -40,7 +40,13 @@ app.get('/api/words/:difficulty', (req, res) => {
 app.post('/api/users/:username', (req, res) => {
   db.addUser(req.params.username, (err, results) => {
     console.log(`Add ${req.params.username} to users`);
-    err ? console.log(err) : res.send(results);
+    if (err) {
+      console.log(err);
+      res.status(500).send(err.detail);
+    } else {
+      res.send(results);
+    }
+
   });
 });
 

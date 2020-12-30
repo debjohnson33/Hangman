@@ -34,12 +34,13 @@ class App extends React.Component {
     e.preventDefault();
     axios.post(`http://localhost:3000/api/users/${username}`, user)
       .then(res => {
-        console.log(res.data);
+        console.log(res);
         this.setState({
           currentUser: user
         });
       })
       .catch(err => {
+        window.alert(`${username} already exists`);
         console.error('There was an error: ', err);
       })
 
