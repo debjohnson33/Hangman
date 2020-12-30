@@ -11,7 +11,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       currentPic: hangmanpics[0],
-      words: []
+      words: [],
+      currentUser: {}
     }
   }
 
@@ -31,7 +32,9 @@ class App extends React.Component {
     console.log(username);
     const user = {username: username, score: 0};
     e.preventDefault();
-    console.log(user);
+    this.setState({
+      currentUser: user
+    });
   }
 
   render () {
