@@ -27,6 +27,13 @@ class App extends React.Component {
       })
   }
 
+  onSubmit(e, username) {
+    console.log(username);
+    const user = {username: username, score: 0};
+    e.preventDefault();
+    console.log(user);
+  }
+
   render () {
     let word;
     if (this.state.words && this.state.words.length > 0) {
@@ -36,12 +43,11 @@ class App extends React.Component {
       <div>
         <h1>Hangman App!</h1>
         <HangmanPic pic={this.state.currentPic} />
-        <UserForm />
+        <UserForm onSubmit={this.onSubmit.bind(this)} />
         <Word word={word || 'Loading...'} />
       </div>
     )
   }
 }
-
 
 export default App;

@@ -15,9 +15,14 @@ class UserForm extends React.Component {
     });
   }
 
+  submit(e) {
+    e.preventDefault();
+    this.props.onSubmit(e, this.state.user);
+  }
+
   render() {
     return (
-      <form>
+      <form onSubmit={this.submit.bind(this)} >
         <p>Username:</p>
         <input
           type="text"
