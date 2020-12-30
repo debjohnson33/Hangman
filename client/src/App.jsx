@@ -75,23 +75,25 @@ class App extends React.Component {
       word = this.state.words[0].word;
     }
     let signUpClicked = this.state.signUpClicked;
-    let username = this.state.currentUser.username;
+    let user = this.state.currentUser;
     const renderUserLogin = () => {
       if (signUpClicked) {
         return <UserForm onSubmit={this.onSubmit.bind(this)} />
       } else if (Object.keys(this.state.currentUser).length === 0) {
         return <LoginForm onLogin={this.onLogin.bind(this)} />
       } else {
-        return <div>User: {username}</div>
+        return <div>User: {user.username}  Score: {user.score}</div>
       }
     }
     return (
       <div>
         <h1>Hangman App!</h1>
-        <HangmanPic pic={this.state.currentPic} />
         {renderUserLogin()}
-        If you do not have a username click here:
-        <button onClick={this.signUpClick}>Signup</button>
+        {(!Object.keys(this.state.currentUser).length === 0 && user) &&
+        (<div>If you do not have a username click here:
+        <button onClick={this.signUpClick}>Signup</button></div>)
+        }
+        <HangmanPic pic={this.state.currentPic} />
         <Word word={word || 'Loading...'} />
       </div>
     )
