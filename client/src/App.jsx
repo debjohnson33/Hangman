@@ -69,6 +69,16 @@ class App extends React.Component {
     });
   }
 
+  changePic() {
+    this.setState(prevState => {
+      let index = hangmanpics.indexOf(prevState.currentPic);
+      return {
+        ...prevState,
+        currentPic: hangmanpics[index + 1]
+      }
+    })
+  }
+
   render () {
     let word;
     if (this.state.words && this.state.words.length > 0) {
@@ -88,7 +98,7 @@ class App extends React.Component {
     const renderWord = () => {
       if (!(Object.keys(this.state.currentUser).length === 0)) {
         console.log('In renderWord');
-        return <Word word={word || 'Loading...'} />
+        return <Word word={word || 'Loading...'} changePic={this.changePic.bind(this)} />
       }
     }
     return (
