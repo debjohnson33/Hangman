@@ -5,7 +5,11 @@ const Word = ({word}) => {
   const [letter, setLetter] = useState('');
 
   const handleSubmit = (e, letter) => {
+    e.preventDefault();
     setLetter(letter);
+    let reg = new RegExp(`${letter}`, 'gi');
+    let matches = word.match(reg);
+    console.log(matches);
   }
 
   let wordDisplay = word.split('').map(char => {
