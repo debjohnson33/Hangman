@@ -85,16 +85,22 @@ class App extends React.Component {
         return <div>User: {user.username}  Score: {user.score}</div>
       }
     }
+    const renderWord = () => {
+      if (!(Object.keys(this.state.currentUser).length === 0)) {
+        console.log('In renderWord');
+        return <Word word={word || 'Loading...'} />
+      }
+    }
     return (
       <div>
         <h1>Hangman App!</h1>
         {renderUserLogin()}
-        {(!Object.keys(this.state.currentUser).length === 0 && user) &&
+        {(Object.keys(this.state.currentUser).length === 0) &&
         (<div>If you do not have a username click here:
         <button onClick={this.signUpClick}>Signup</button></div>)
         }
         <HangmanPic pic={this.state.currentPic} />
-        <Word word={word || 'Loading...'} />
+        {renderWord()}
       </div>
     )
   }
