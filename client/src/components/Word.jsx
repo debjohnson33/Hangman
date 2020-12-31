@@ -8,14 +8,18 @@ const Word = ({word}) => {
     setLetter(letter);
   }
 
+  let wordDisplay = word.split('').map(char => {
+    return '_';
+  }).join(' ');
+
   return (
     <div>
-      {word}
+      {wordDisplay}
       <LetterGuessForm handleSubmit={handleSubmit} />
     </div>
   )
 };
-// build a string of '_' using the word length - put space in between each in display
+
 // check user input to see if the word contains the letter
 // change the string and put the character in place of the '_' anywhere it is
 // i.e. if a word has 2 like 'apple' and the person guesses the 'p', the string would be '_pp__'
