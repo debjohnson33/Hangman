@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import LetterGuessForm from './LetterGuessForm.jsx';
 
-const Word = ({word}) => {
+const Word = ({word, changePic}) => {
+  let wordDisplay = word.split('').map(char => {
+    return '_';
+  }).join(' ');
+  console.log(typeof wordDisplay);
   const [letter, setLetter] = useState('');
+  const [display, setDisplay] = useState(wordDisplay);
 
   const handleSubmit = (e, letter) => {
     e.preventDefault();
@@ -10,15 +15,32 @@ const Word = ({word}) => {
     let reg = new RegExp(`${letter}`, 'gi');
     let matches = word.match(reg);
     console.log(matches);
+    if (matches === null) {
+      changePic();
+    } else {
+      // wordDisplay = display.split('').map((char, index) => {
+      //   if (matches.includes(char)) {
+      //     return char;
+      //   } else {
+      //     return '_';
+      //   }
+      // }).join(' ');
+      setDisplay(display => {
+        return display.split(' ').map(char => {
+          if (matches.includes(char)) {
+            return char;
+          } else {
+            return '_';
+          }
+        }).join(' ');
+      });
+      console.log('Line 38: ', display);
+    }
   }
-
-  let wordDisplay = word.split('').map(char => {
-    return '_';
-  }).join(' ');
 
   return (
     <div>
-      {wordDisplay}
+      {display}
       <LetterGuessForm handleSubmit={handleSubmit} />
     </div>
   )
