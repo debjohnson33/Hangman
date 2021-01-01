@@ -18,26 +18,40 @@ class Word extends React.Component {
     })
   }
 
+  getAllIndexes(arr, val) {
+    var indexes = [], i;
+    for(i = 0; i < arr.length; i++) {
+      if (arr[i].toLowerCase() === val.toLowerCase()) {
+        indexes.push(i);
+      }
+    }
+    return indexes;
+  }
+
+  putLetterIn(arr, val) {
+    let indexes = this.getAllIndexes(this.props.word.split(''), val);
+    indexes.forEach(index => arr[index] = val);
+    return arr.join(' ');
+  }
+
   handleSubmit(e, letter) {
     e.preventDefault();
     this.setState({letter: letter});
     let reg = new RegExp(`${letter}`, 'gi');
     let matches = this.props.word.match(reg);
+    let indexes = this.getAllIndexes(this.props.word.split(''), letter);
+    // find indexes in word of each match
     console.log(matches);
+    console.log(indexes);
     if (matches === null) {
-      changePic();
+      this.props.changePic();
     } else {
-      this.setState(prevState => {
+      this.setState(state => {
         return {
-          wordDisplay: prevState.wordDisplay.split('').map(char => {
-            if (matches.includes(char)) {
-              return char;
-            } else {
-              return '_';
-            }
-          }).join(' ')
+          wordDisplay: this.putLetterIn(state.wordDisplay.split(' '), letter)
         }
       });
+      console.log(this.state.wordDisplay);
     }
   }
 
