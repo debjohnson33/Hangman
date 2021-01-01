@@ -79,6 +79,25 @@ class App extends React.Component {
     })
   }
 
+  changeScore() {
+    // add points to score for correct guess
+    // axios request to db to update score
+    // change currentUser's score in state to re-render score for user
+    console.log('In Change Score')
+    this.setState(prevState => {
+        return {
+          ...prevState,
+          currentUser: {
+            id: prevState.currentUser.id,
+            username: prevState.currentUser.username,
+            score: prevState.currentUser.score + 1,
+            created_on: prevState.currentUser.created_on
+          }
+        }
+      }
+    );
+  }
+
   render () {
     let word;
     if (this.state.words && this.state.words.length > 0) {
@@ -98,7 +117,7 @@ class App extends React.Component {
     const renderWord = () => {
       if (!(Object.keys(this.state.currentUser).length === 0)) {
         console.log('In renderWord');
-        return <Word word={word || 'Loading...'} changePic={this.changePic.bind(this)} />
+        return <Word word={word || 'Loading...'} changePic={this.changePic.bind(this)} changeScore={this.changeScore.bind(this)} />
       }
     }
     return (

@@ -51,7 +51,7 @@ class Word extends React.Component {
           wordDisplay: this.putLetterIn(state.wordDisplay.split(' '), letter)
         }
       });
-      console.log(this.state.wordDisplay);
+      this.props.changeScore();
     }
   }
 
