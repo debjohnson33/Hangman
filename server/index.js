@@ -20,6 +20,13 @@ app.get('/api/users/:username', (req, res) => {
   })
 });
 
+app.put('/api/users/:username/:score', (req, res) => {
+  db.updateUserScore(req.params.username, +req.params.score, (err, results) => {
+    console.log('Updating score');
+    err ? console.log(err) : res.send(results);
+  });
+});
+
 app.get('/api/words/all', (req, res) => {
   db.getAllWords((err, results) => {
     console.log(`Getting all words`);

@@ -55,6 +55,18 @@ const addUser = (username, callback) => {
   });
 };
 
+const updateUserScore = (username, score, callback) => {
+  //score = parseInt(score, 10);
+  const updateScoreQuery = `UPDATE users SET score = ${score} WHERE username = '${username}';`;
+  pool.query(updateScoreQuery, (err, res) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, res);
+    }
+  })
+}
+
 const addWord = (word, difficulty, callback) => {
   const today = new Date().toISOString().slice(0,10);
   const addWordQuery = `INSERT INTO words(word, difficulty, created_on) VALUES ('${word}', '${difficulty}', '${today}');`;
@@ -73,5 +85,6 @@ module.exports = {
   getWords,
   getAllWords,
   addUser,
+  updateUserScore,
   addWord
 };
