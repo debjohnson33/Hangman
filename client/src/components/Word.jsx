@@ -34,6 +34,10 @@ class Word extends React.Component {
     return arr.join(' ');
   }
 
+  checkIfWinner() {
+    this.props.isWinner(this.state.wordDisplay);
+  }
+
   handleSubmit(e, letter) {
     e.preventDefault();
     this.setState({letter: letter});
@@ -43,11 +47,10 @@ class Word extends React.Component {
     if (matches === null) {
       this.props.changePic();
     } else {
-      this.setState(state => {
-        return {
-          wordDisplay: this.putLetterIn(state.wordDisplay.split(' '), letter)
-        }
-      });
+      this.setState({wordDisplay: this.putLetterIn(this.state.wordDisplay.split(' '), letter)}, () => {
+        this.checkIfWinner();
+      }
+      );
       this.props.changeScore();
     }
   }
@@ -56,9 +59,6 @@ class Word extends React.Component {
     return (
       <div>
         {this.state.wordDisplay}
-        {(this.state.wordDisplay === this.props.word.split('').join(' ').toLowerCase()) &&
-          this.props.triggerWinner()
-        }
         <LetterGuessForm handleSubmit={this.handleSubmit.bind(this)} />
       </div>
     )

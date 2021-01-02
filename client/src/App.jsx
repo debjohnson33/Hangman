@@ -4,6 +4,7 @@ import HangmanPic from './components/HangmanPic.jsx';
 import Word from './components/Word.jsx';
 import UserForm from './components/UserForm.jsx';
 import LoginForm from './components/LoginForm.jsx';
+import WinnerModal from './WinnerModal.jsx';
 
 const hangmanpics = ["https://hangman-pics.s3.us-east-2.amazonaws.com/empty.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/first_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/second_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/third_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/fourth_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/fifth_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/sixth_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/seventh_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/eighth_wrong_guess.jpg"];
 
@@ -15,7 +16,9 @@ class App extends React.Component {
       words: [],
       currentUser: {},
       signUpClicked: false,
-      currentScore: 0
+      currentScore: 0,
+      showWinner: false,
+      showLoser: false
     }
     this.signUpClick = this.signUpClick.bind(this);
   }
@@ -99,6 +102,13 @@ class App extends React.Component {
     );
   }
 
+  isWinner(currentWord) {
+    let word = this.state.words[0].word;
+    if (currentWord === word.split('').join(' ').toLowerCase()) {
+      this.triggerWinner()
+    }
+  }
+
   triggerWinner() {
     axios.get(`/api/users/${this.state.currentUser.username}/score`)
       .then(res => {
@@ -113,6 +123,9 @@ class App extends React.Component {
         console.log(err);
       })
     // render modal to say "You win!" and give options
+    this.setState({
+      showWinner: true
+    });
   }
 
   render () {
@@ -133,7 +146,14 @@ class App extends React.Component {
     }
     const renderWord = () => {
       if (!(Object.keys(this.state.currentUser).length === 0)) {
-        return <Word word={word || 'Loading...'} changePic={this.changePic.bind(this)} changeScore={this.changeScore.bind(this)} triggerWinner={this.triggerWinner.bind(this)} />
+        return <Word word={word || 'Loading...'} changePic={this.changePic.bind(this)} changeScore={this.changeScore.bind(this)} triggerWinner={this.triggerWinner.bind(this)} isWinner={this.isWinner.bind(this)} />
+      }
+    }
+    const renderModal = () => {
+      if (this.state.showWinner === true) {
+        return <WinnerModal />
+      } else {
+        null
       }
     }
     return (
@@ -146,6 +166,7 @@ class App extends React.Component {
         }
         <HangmanPic pic={this.state.currentPic} />
         {renderWord()}
+        {renderModal()}
       </div>
     )
   }
