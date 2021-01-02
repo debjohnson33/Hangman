@@ -46,6 +46,10 @@ class Word extends React.Component {
     if (matches === null) {
       this.props.changePic();
     } else {
+      // if the word with spaces in it is equal to the wordDisplay
+      if (this.state.wordDisplay === this.props.word.split('').join(' ')) {
+        //   game is done -- ? trigger function to render Winner component
+      }
       this.setState(state => {
         return {
           wordDisplay: this.putLetterIn(state.wordDisplay.split(' '), letter)
