@@ -21,6 +21,17 @@ const getUser = (username, callback) => {
   });
 };
 
+const getUserScore = (username, callback) => {
+  const getUserScoreQuery = `SELECT score FROM users WHERE username = '${username}';`;
+  pool.query(getUserScoreQuery, (err, res) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, res.rows[0]);
+    }
+  });
+};
+
 const getWords = (difficulty, callback) => {
   const getWordsQuery = `SELECT * FROM words WHERE difficulty = '${difficulty}'`;
   pool.query(getWordsQuery, (err, res) => {
@@ -82,6 +93,7 @@ const addWord = (word, difficulty, callback) => {
 module.exports = {
   pool,
   getUser,
+  getUserScore,
   getWords,
   getAllWords,
   addUser,

@@ -20,6 +20,13 @@ app.get('/api/users/:username', (req, res) => {
   })
 });
 
+app.get('/api/users/:username/score', (req, res) => {
+  db.getUserScore(req.params.username, (err, results) => {
+    console.log('Getting score');
+    err ? console.log(err) : res.send(results);
+  });
+})
+
 app.put('/api/users/:username/:score', (req, res) => {
   db.updateUserScore(req.params.username, +req.params.score, (err, results) => {
     console.log('Updating score');
