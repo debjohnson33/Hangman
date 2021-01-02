@@ -5,6 +5,7 @@ import Word from './components/Word.jsx';
 import UserForm from './components/UserForm.jsx';
 import LoginForm from './components/LoginForm.jsx';
 import WinnerModal from './WinnerModal.jsx';
+import LoserModal from './LoserModal.jsx';
 
 const hangmanpics = ["https://hangman-pics.s3.us-east-2.amazonaws.com/empty.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/first_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/second_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/third_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/fourth_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/fifth_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/sixth_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/seventh_wrong_guess.jpg", "https://hangman-pics.s3.us-east-2.amazonaws.com/eighth_wrong_guess.jpg"];
 
@@ -76,20 +77,11 @@ class App extends React.Component {
   changePic() {
     this.setState(prevState => {
       let index = hangmanpics.indexOf(prevState.currentPic);
-      if (index === 8) {
-        // axios request to db to update score
-        //   pull score of user
-        //   check if score from db is less than current score
-        //     yes, then update db score for user
-        //     no, don't update
-        // trigger end of play for this word -- render Loser component
-      } else {
-        return {
-          ...prevState,
-          currentPic: hangmanpics[index + 1]
-        }
+      return {
+        ...prevState,
+        currentPic: hangmanpics[index + 1]
       }
-    })
+    }, () => this.isLoser())
   }
 
   changeScore() {
@@ -109,7 +101,32 @@ class App extends React.Component {
     }
   }
 
+  isLoser() {
+    if (hangmanpics.indexOf(this.state.currentPic) === 8) {
+      this.triggerLoser()
+    }
+  }
+
   triggerWinner() {
+    axios.get(`/api/users/${this.state.currentUser.username}/score`)
+      .then(res => {
+        if (this.state.currentScore > res.data.score) {
+          return axios.put(`/api/users/${this.state.currentUser.username}/${this.state.currentUser.score}`)
+        }
+      })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    // render modal to say "You win!" and give options
+    this.setState({
+      showWinner: true
+    });
+  }
+
+  triggerLoser() {
     axios.get(`/api/users/${this.state.currentUser.username}/score`)
       .then(res => {
         if (this.state.currentScore > res.data.score) {
@@ -122,10 +139,9 @@ class App extends React.Component {
       .catch(err => {
         console.log(err);
       })
-    // render modal to say "You win!" and give options
     this.setState({
-      showWinner: true
-    });
+      showLoser: true
+    })
   }
 
   render () {
@@ -152,6 +168,8 @@ class App extends React.Component {
     const renderModal = () => {
       if (this.state.showWinner === true) {
         return <WinnerModal />
+      } else if (this.state.showLoser === true) {
+        return <LoserModal />
       } else {
         null
       }
