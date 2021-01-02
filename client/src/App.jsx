@@ -74,6 +74,10 @@ class App extends React.Component {
       let index = hangmanpics.indexOf(prevState.currentPic);
       if (index === 8) {
         // axios request to db to update score
+        //   pull score of user
+        //   check if score from db is less than current score
+        //     yes, then update db score for user
+        //     no, don't update
         // trigger end of play for this word -- render Loser component
       } else {
         return {
@@ -85,7 +89,6 @@ class App extends React.Component {
   }
 
   changeScore() {
-    console.log('In Change Score')
     this.setState(prevState => {
         return {
           ...prevState,
@@ -98,6 +101,28 @@ class App extends React.Component {
         }
       }
     );
+  }
+
+  triggerWinner() {
+    // axios request to db to update score
+    //   pull score of user
+    console.log('In triggerWinner function')
+    axios.get(`/api/users/${this.state.currentUser.username}/score`)
+      .then(res => {
+        //   check if score from db is less than current score
+        console.log(this.state.currentUser.score);
+        if (this.state.currentUser.score > res.data.score) {
+          //     yes, then update db score for user
+          return axios.put(`/api/users/${this.state.currentUser.username}/${this.state.currentUser.score}`)
+        } //     no, don't update
+      })
+      .then(res => {
+        console.log('Updated score in db', res);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    // render modal to say "You win!" and give options
   }
 
   render () {
@@ -118,8 +143,7 @@ class App extends React.Component {
     }
     const renderWord = () => {
       if (!(Object.keys(this.state.currentUser).length === 0)) {
-        console.log('In renderWord');
-        return <Word word={word || 'Loading...'} changePic={this.changePic.bind(this)} changeScore={this.changeScore.bind(this)} />
+        return <Word word={word || 'Loading...'} changePic={this.changePic.bind(this)} changeScore={this.changeScore.bind(this)} triggerWinner={this.triggerWinner.bind(this)} />
       }
     }
     return (
