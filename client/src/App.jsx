@@ -14,7 +14,8 @@ class App extends React.Component {
       currentPic: hangmanpics[0],
       words: [],
       currentUser: {},
-      signUpClicked: false
+      signUpClicked: false,
+      currentScore: 0
     }
     this.signUpClick = this.signUpClick.bind(this);
   }
@@ -92,29 +93,18 @@ class App extends React.Component {
     this.setState(prevState => {
         return {
           ...prevState,
-          currentUser: {
-            id: prevState.currentUser.id,
-            username: prevState.currentUser.username,
-            score: prevState.currentUser.score + 1,
-            created_on: prevState.currentUser.created_on
-          }
+          currentScore: prevState.currentScore + 1
         }
       }
     );
   }
 
   triggerWinner() {
-    // axios request to db to update score
-    //   pull score of user
-    console.log('In triggerWinner function')
     axios.get(`/api/users/${this.state.currentUser.username}/score`)
       .then(res => {
-        //   check if score from db is less than current score
-        console.log(this.state.currentUser.score);
-        if (this.state.currentUser.score > res.data.score) {
-          //     yes, then update db score for user
+        if (this.state.currentScore > res.data.score) {
           return axios.put(`/api/users/${this.state.currentUser.username}/${this.state.currentUser.score}`)
-        } //     no, don't update
+        }
       })
       .then(res => {
         console.log('Updated score in db', res);
@@ -138,7 +128,7 @@ class App extends React.Component {
       } else if (Object.keys(this.state.currentUser).length === 0) {
         return <LoginForm onLogin={this.onLogin.bind(this)} />
       } else {
-        return <div>User: {user.username}  Score: {user.score}</div>
+        return <div>User: {user.username}  Score: {this.state.currentScore}</div>
       }
     }
     const renderWord = () => {
