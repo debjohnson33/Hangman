@@ -72,17 +72,19 @@ class App extends React.Component {
   changePic() {
     this.setState(prevState => {
       let index = hangmanpics.indexOf(prevState.currentPic);
-      return {
-        ...prevState,
-        currentPic: hangmanpics[index + 1]
+      if (index === 8) {
+        // axios request to db to update score
+        // trigger end of play for this word -- render Loser component
+      } else {
+        return {
+          ...prevState,
+          currentPic: hangmanpics[index + 1]
+        }
       }
     })
   }
 
   changeScore() {
-    // add points to score for correct guess
-    // axios request to db to update score
-    // change currentUser's score in state to re-render score for user
     console.log('In Change Score')
     this.setState(prevState => {
         return {
