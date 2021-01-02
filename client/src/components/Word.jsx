@@ -41,15 +41,9 @@ class Word extends React.Component {
     let matches = this.props.word.match(reg);
     let indexes = this.getAllIndexes(this.props.word.split(''), letter);
     // find indexes in word of each match
-    console.log(matches);
-    console.log(indexes);
     if (matches === null) {
       this.props.changePic();
     } else {
-      // if the word with spaces in it is equal to the wordDisplay
-      if (this.state.wordDisplay === this.props.word.split('').join(' ')) {
-        //   game is done -- ? trigger function to render Winner component
-      }
       this.setState(state => {
         return {
           wordDisplay: this.putLetterIn(state.wordDisplay.split(' '), letter)
@@ -63,6 +57,9 @@ class Word extends React.Component {
     return (
       <div>
         {this.state.wordDisplay}
+        {(this.state.wordDisplay === this.props.word.split('').join(' ').toLowerCase()) &&
+          this.props.triggerWinner()
+        }
         <LetterGuessForm handleSubmit={this.handleSubmit.bind(this)} />
       </div>
     )
