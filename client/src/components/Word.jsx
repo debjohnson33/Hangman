@@ -40,7 +40,6 @@ class Word extends React.Component {
     let reg = new RegExp(`${letter}`, 'gi');
     let matches = this.props.word.match(reg);
     let indexes = this.getAllIndexes(this.props.word.split(''), letter);
-    // find indexes in word of each match
     if (matches === null) {
       this.props.changePic();
     } else {
@@ -66,7 +65,4 @@ class Word extends React.Component {
   }
 };
 
-// check user input to see if the word contains the letter
-// change the string and put the character in place of the '_' anywhere it is
-// i.e. if a word has 2 like 'apple' and the person guesses the 'p', the string would be '_pp__'
 export default Word;
