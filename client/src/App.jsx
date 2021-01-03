@@ -145,6 +145,17 @@ class App extends React.Component {
     })
   }
 
+  onQuit() {
+    this.setState({
+      currentUser: {},
+      showWinner: false
+    });
+  }
+
+  onNextWord() {
+
+  }
+
   render () {
     let word;
     if (this.state.words && this.state.words.length > 0) {
@@ -168,9 +179,9 @@ class App extends React.Component {
     }
     const renderModal = () => {
       if (this.state.showWinner === true) {
-        return <WinnerModal />
+        return <WinnerModal onNextWord={this.onNextWord.bind(this)} onQuit={this.onQuit.bind(this)} />
       } else if (this.state.showLoser === true) {
-        return <LoserModal />
+        return <LoserModal onNextWord={this.onNextWord.bind(this)} onQuit={this.onQuit.bind(this)} />
       } else {
         null
       }

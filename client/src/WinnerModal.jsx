@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './style.css';
 
-function WinnerModal() {
+function WinnerModal({onQuit, onNextWord}) {
   return (
     <div className={styles.modal}>
-      <h2>WINNER!</h2>
-      <button>Quit Game</button>
-      <button>Next Word</button>
+      <h2 className={styles.winner}>WINNER!</h2>
+      <button className={styles.btn} onClick={onQuit} >Quit Game</button>
+      <button className={styles.btn} onClick={onNextWord} >Next Word</button>
     </div>
   )
 }
