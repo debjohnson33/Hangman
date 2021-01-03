@@ -201,12 +201,11 @@ class App extends React.Component {
       }
     }
     return (
-      <div>
-        <h1>Hangman App!</h1>
+      <div id={styles.main}>
+        <h1>Welcome to Hangman!</h1>
         {renderUserLogin()}
         {(Object.keys(this.state.currentUser).length === 0) &&
-        (<div>If you do not have a username click here:
-        <button onClick={this.signUpClick}>Signup</button></div>)
+        (<button className={styles.btn} onClick={this.signUpClick}>Click here to Signup</button>)
         }
         <HangmanPic pic={this.state.currentPic} />
         {renderWord()}
