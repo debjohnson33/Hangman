@@ -44,7 +44,6 @@ class App extends React.Component {
     e.preventDefault();
     axios.post(`/api/users/${username}`, user)
       .then(res => {
-        console.log(res);
         this.setState({
           currentUser: user,
           signUpClicked: false
@@ -62,7 +61,6 @@ class App extends React.Component {
     let word = this.state.words[randomIndex].word;
     axios.get(`/api/users/${username}`)
      .then(res => {
-       console.log(res.data);
        this.setState({
          currentUser: res.data,
          currentWord: word
@@ -160,7 +158,6 @@ class App extends React.Component {
   onNextWord() {
     let randomIndex = Math.floor(Math.random() * 101) + 1
     let word = this.state.words[randomIndex].word;
-    console.log(word);
     this.setState({
       showWinner: false,
       showLoser: false,

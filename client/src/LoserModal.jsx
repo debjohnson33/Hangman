@@ -6,7 +6,7 @@ function LoserModal({onQuit, onNextWord, word}) {
   return (
     <div className={styles.modal}>
       <h2 className={styles.loser}>Better Luck Next Time!</h2>
-      <p>The word was: {word}</p>
+      <p className={styles.loser}>The word was: {word}</p>
       <button className={styles.btn} onClick={onQuit} >Quit Game</button>
       <button className={styles.btn} onClick={onNextWord} >Next Word</button>
     </div>
