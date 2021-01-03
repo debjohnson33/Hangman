@@ -16,6 +16,7 @@ class App extends React.Component {
     this.state = {
       currentPic: hangmanpics[0],
       words: [],
+      currentWord: '',
       currentUser: {},
       signUpClicked: false,
       currentScore: 0,
@@ -57,16 +58,20 @@ class App extends React.Component {
 
   onLogin(e, username) {
     e.preventDefault();
+    let randomIndex = Math.floor(Math.random() * 101) + 1
+    let word = this.state.words[randomIndex].word;
     axios.get(`/api/users/${username}`)
      .then(res => {
        console.log(res.data);
        this.setState({
-         currentUser: res.data
+         currentUser: res.data,
+         currentWord: word
        })
      })
      .catch(err => {
        console.error('There was an error: ', err);
      })
+
   }
 
   signUpClick() {
@@ -96,7 +101,7 @@ class App extends React.Component {
   }
 
   isWinner(currentWord) {
-    let word = this.state.words[0].word;
+    let word = this.state.currentWord;
     if (currentWord === word.split('').join(' ').toLowerCase()) {
       this.triggerWinner()
     }
@@ -148,12 +153,21 @@ class App extends React.Component {
   onQuit() {
     this.setState({
       currentUser: {},
-      showWinner: false
+      showWinner: false,
+      showLoser: false
     });
   }
 
   onNextWord() {
-
+    // get another random word
+    let randomIndex = Math.floor(Math.random() * 101) + 1
+    let word = this.state.words[randomIndex].word;
+    console.log(word);
+    this.setState({
+      showWinner: false,
+      showLoser: false,
+      currentWord: word
+    })
   }
 
   render () {
@@ -161,6 +175,8 @@ class App extends React.Component {
     if (this.state.words && this.state.words.length > 0) {
       word = this.state.words[0].word;
     }
+    word = this.state.currentWord;
+
     let signUpClicked = this.state.signUpClicked;
     let user = this.state.currentUser;
     const renderUserLogin = () => {
@@ -181,7 +197,7 @@ class App extends React.Component {
       if (this.state.showWinner === true) {
         return <WinnerModal onNextWord={this.onNextWord.bind(this)} onQuit={this.onQuit.bind(this)} />
       } else if (this.state.showLoser === true) {
-        return <LoserModal onNextWord={this.onNextWord.bind(this)} onQuit={this.onQuit.bind(this)} />
+        return <LoserModal onNextWord={this.onNextWord.bind(this)} onQuit={this.onQuit.bind(this)} word={this.state.currentWord} />
       } else {
         null
       }
