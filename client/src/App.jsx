@@ -126,7 +126,6 @@ class App extends React.Component {
       .catch(err => {
         console.log(err);
       })
-    // render modal to say "You win!" and give options
     this.setState({
       showWinner: true
     });
@@ -159,23 +158,22 @@ class App extends React.Component {
   }
 
   onNextWord() {
-    // get another random word
     let randomIndex = Math.floor(Math.random() * 101) + 1
     let word = this.state.words[randomIndex].word;
     console.log(word);
     this.setState({
       showWinner: false,
       showLoser: false,
-      currentWord: word
+      currentWord: word,
+      currentPic: hangmanpics[0]
     })
   }
 
   render () {
     let word;
     if (this.state.words && this.state.words.length > 0) {
-      word = this.state.words[0].word;
+      word = this.state.currentWord
     }
-    word = this.state.currentWord;
 
     let signUpClicked = this.state.signUpClicked;
     let user = this.state.currentUser;
@@ -190,7 +188,7 @@ class App extends React.Component {
     }
     const renderWord = () => {
       if (!(Object.keys(this.state.currentUser).length === 0)) {
-        return <Word word={word || 'Loading...'} changePic={this.changePic.bind(this)} changeScore={this.changeScore.bind(this)} triggerWinner={this.triggerWinner.bind(this)} isWinner={this.isWinner.bind(this)} />
+        return <Word key={this.state.currentWord} word={word} changePic={this.changePic.bind(this)} changeScore={this.changeScore.bind(this)} triggerWinner={this.triggerWinner.bind(this)} isWinner={this.isWinner.bind(this)} />
       }
     }
     const renderModal = () => {
