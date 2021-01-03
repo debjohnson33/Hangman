@@ -183,7 +183,7 @@ class App extends React.Component {
       } else if (Object.keys(this.state.currentUser).length === 0) {
         return <LoginForm onLogin={this.onLogin.bind(this)} />
       } else {
-        return <div>User: {user.username}  Score: {this.state.currentScore}</div>
+        return <div>User: {user.username}  Score: {this.state.currentScore}  High Score: {user.score}</div>
       }
     }
     const renderWord = () => {
