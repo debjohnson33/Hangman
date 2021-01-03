@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import styles from './style.css';
 
 function WinnerModal() {
   return (
-    <div className="modal">
+    <div className={styles.modal}>
       <h2>WINNER!</h2>
       <button>Quit Game</button>
       <button>Next Word</button>

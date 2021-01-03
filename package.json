@@ -41,7 +41,9 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
+    "css-loader": "^5.0.1",
     "faker": "^5.1.0",
-    "file-loader": "^6.2.0"
+    "file-loader": "^6.2.0",
+    "style-loader": "^2.0.0"
   }
 }

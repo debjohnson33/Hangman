@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import styles from './style.css';
 
 function LoserModal() {
   return (
-    <div className="modal">
+    <div className={styles.modal}>
       <h2>Better Luck Next Time!</h2>
       <button>Quit Game</button>
       <button>Next Word</button>
