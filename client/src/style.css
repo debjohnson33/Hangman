@@ -29,13 +29,18 @@ div.form {
   border: 2px solid green;
   border-radius: 10px;
   left: 50%;
+  margin: 5px;
   padding: 10px;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 400;
+  font-size: medium;
 }
 
 #winnerModal {
   position: relative;
   z-index: 999;
 }
+
 #loserModal {
   position: relative;
   z-index: 999;
@@ -60,13 +65,18 @@ div.form {
   padding: 10px;
   text-align: center;
   text-decoration: none;
-  font-size: 16px;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 400;
+  font-size: large;
   margin: 5px;
 }
 
 .winner, .loser {
-  color: darkolivegreen;
-  background-color: coral;
+  color: darkslategrey;
+  background-color: lightyellow;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 700;
+  font-size: large;
 }
 
 .word {
@@ -79,10 +89,21 @@ div.form {
   margin-right: auto;
   height: 50%;
   width: 50%;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 400;
+  font-size: medium;
 }
 
 .user {
   display: flex;
   justify-content: space-around;
   margin: 5px;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 700;
+  font-size: large;
+}
+
+h1, h2 {
+  font-family: 'Arimo', sans-serif;
+  font-weight: 400;
 }
