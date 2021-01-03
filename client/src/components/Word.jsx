@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import LetterGuessForm from './LetterGuessForm.jsx';
+import styles from '../style.css'
 
 class Word extends React.Component {
   constructor(props) {
@@ -58,7 +59,9 @@ class Word extends React.Component {
   render() {
     return (
       <div>
-        {this.state.wordDisplay}
+        <div className={styles.word} >
+          {this.state.wordDisplay}
+        </div>
         <LetterGuessForm handleSubmit={this.handleSubmit.bind(this)} />
       </div>
     )
