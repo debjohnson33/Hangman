@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../style.css';
 
 class UserForm extends React.Component {
   constructor(props) {
@@ -25,16 +26,18 @@ class UserForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.submit.bind(this)} >
-        <p>Username:</p>
-        <input
-          type="text"
-          name="username"
-          value={this.state.user}
-          onChange={this.handleChange}
-        />
-        <input type="submit" />
-      </form>
+      <div className={styles.login}>
+        <form onSubmit={this.submit.bind(this)} >
+          <p>Type in your new username:</p>
+          <input
+            type="text"
+            name="username"
+            value={this.state.user}
+            onChange={this.handleChange}
+          />
+          <input className={styles.btn} type="submit" />
+        </form>
+      </div>
     )
   }
 }

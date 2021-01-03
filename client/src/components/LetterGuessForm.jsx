@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../style.css';
 
 class LetterGuessForm extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class LetterGuessForm extends React.Component {
           onChange={this.handleChange}
           value={this.state.letter}
         />
-        <input type="submit" />
+        <input className={styles.btn} type="submit" />
       </form>
     )
   }
