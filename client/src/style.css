@@ -1,3 +1,37 @@
+#main {
+  background-color: lightblue;
+  margin: auto;
+  width: 75%;
+  padding: 20px;
+  border: 3px solid green;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 75%;
+  width: 75%;
+}
+
+div.form {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.login {
+  display: inline-block;
+  text-align: left;
+  width: 150px;
+  height: 150px;
+  background-color: lightgray;
+  border: 2px solid green;
+  border-radius: 10px;
+  left: 50%;
+  padding: 10px;
+}
+
 #winnerModal {
   position: relative;
   z-index: 999;
@@ -23,10 +57,11 @@
 .btn {
   border-radius: 12px;
   color: blue;
-  padding: 15px 32px;
+  padding: 10px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
+  margin: 5px;
 }
 
 .winner, .loser {
