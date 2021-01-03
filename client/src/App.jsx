@@ -151,7 +151,9 @@ class App extends React.Component {
     this.setState({
       currentUser: {},
       showWinner: false,
-      showLoser: false
+      showLoser: false,
+      currentPic: hangmanpics[0],
+      currentScore: 0
     });
   }
 
@@ -162,7 +164,8 @@ class App extends React.Component {
       showWinner: false,
       showLoser: false,
       currentWord: word,
-      currentPic: hangmanpics[0]
+      currentPic: hangmanpics[0],
+      currentScore: 0
     })
   }
 
