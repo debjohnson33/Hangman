@@ -5,7 +5,7 @@ import LetterGuessForm from '../client/src/components/LetterGuessForm.jsx';
 
 Enzyme.configure({adapter: new Adapter() });
 
-describe('User Form Component', () => {
+describe('Letter Guess Form Component', () => {
   it('should render', () => {
     const wrapper = shallow(<LetterGuessForm />);
     expect(wrapper.exists()).toBeTruthy();

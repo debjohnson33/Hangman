@@ -5,7 +5,7 @@ import LoginForm from '../client/src/components/LoginForm.jsx';
 
 Enzyme.configure({adapter: new Adapter() });
 
-describe('User Form Component', () => {
+describe('Login Form Component', () => {
   it('should render', () => {
     const wrapper = shallow(<LoginForm />);
     expect(wrapper.exists()).toBeTruthy();
