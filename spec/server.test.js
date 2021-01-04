@@ -16,6 +16,20 @@ describe('GET route for all words', () => {
   });
 });
 
+describe('GET route for certain difficulty of words', () => {
+  it('should successfully access GET route for specified difficulty', (done) => {
+    request.get('/api/words/hard').expect(200).expect(res => {
+      expect(res.body[0].difficulty).toEqual("hard");
+    }).end(done);
+  });
+
+  it('should return a 404 if difficulty is not in the request', (done) => {
+    request.get('/api/words').expect(404).expect(res => {
+      expect(res.status).toEqual(404);
+    }).end(done);
+  });
+});
+
 describe('GET route for user', () => {
   it('should successfully access GET route for user', (done) => {
     request.get('/api/users/greatOne').expect(200).expect(res => {
