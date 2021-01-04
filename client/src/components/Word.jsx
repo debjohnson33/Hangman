@@ -59,9 +59,9 @@ class Word extends React.Component {
   render() {
     return (
       <div>
-        <div className={styles.word} >
+        <p className={styles.word} >
           {this.state.wordDisplay}
-        </div>
+        </p>
         <LetterGuessForm handleSubmit={this.handleSubmit.bind(this)} />
       </div>
     )
