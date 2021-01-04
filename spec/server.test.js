@@ -39,13 +39,27 @@ describe('GET route for user', () => {
 describe('POST route for user', () => {
   it('should successfully add a new user', (done) => {
     request.post('/api/users/shepherd').expect(200).expect(res => {
-      expect(res.status).toEqual(200); // need to change to username each time
+      expect(res.status).toEqual(200); // need to change username each time
     }).end(done); // otherwise the user will already be there
   });
 
   it('should return a 500 if the username is already in use', (done) => {
     request.post('/api/users/greatOne').expect(500).expect(res => {
       expect(res.status).toEqual(500);
+    }).end(done);
+  });
+});
+
+describe('PUT route for user score', () => {
+  it('should successfully change user score', (done) => {
+    request.put('/api/users/shepherd/10').expect(200).expect(res => {
+      expect(res.status).toEqual(200);
+    }).end(done);
+  });
+
+  it('should return a 404 if the score is not in the request', (done) => {
+    request.put('/api/users/greatOne').expect(404).expect(res => {
+      expect(res.status).toEqual(404);
     }).end(done);
   });
 });
