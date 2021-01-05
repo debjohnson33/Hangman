@@ -42,11 +42,14 @@ class App extends React.Component {
     console.log(username);
     const user = {username: username, score: 0};
     e.preventDefault();
+    let randomIndex = Math.floor(Math.random() * 101) + 1
+    let word = this.state.words[randomIndex].word;
     axios.post(`/api/users/${username}`, user)
       .then(res => {
         this.setState({
           currentUser: user,
-          signUpClicked: false
+          signUpClicked: false,
+          currentWord: word
         });
       })
       .catch(err => {
