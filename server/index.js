@@ -74,6 +74,6 @@ app.post('/api/words', (req, res) => {
   });
 });
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`Hangman app is listening at http://localhost:${PORT}`);
 });
