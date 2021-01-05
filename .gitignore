@@ -39,3 +39,6 @@ bower_components/
 *.csv
 
 bundle.js
+
+*.pem
+*.sh
