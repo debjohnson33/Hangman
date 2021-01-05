@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 const db = require('../db/pool.js');
 
 // db.on('connect', () => {
@@ -75,5 +75,5 @@ app.post('/api/words', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Hangman app is listening at http://localhost:${port}`);
+  console.log(`Hangman app is listening at http://localhost:${PORT}`);
 });
