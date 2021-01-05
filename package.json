@@ -14,7 +14,7 @@
   },
   "scripts": {
     "create-tables": "babel-node ./db/dbConnection createAllTables",
-    "start": "nodemon ./server/index.js",
+    "start": "node ./server/index.js",
     "build": "webpack --config webpack.prod.config.js",
     "setup": "npm-run-all -p start create-tables",
     "seed:csv": "node ./db/seed.js",
