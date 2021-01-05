@@ -18,6 +18,7 @@
     "build": "webpack -d --watch",
     "setup": "npm-run-all -p start create-tables",
     "seed:csv": "node ./db/seed.js",
+    "seed": "node ./db/seedDB.js",
     "production": "webpack --config webpack.prod.config.js && node ./server/index.js",
     "test": "jest"
   },
