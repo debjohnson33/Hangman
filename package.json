@@ -12,6 +12,9 @@
       "\\.(s?css|less)$": "identity-obj-proxy"
     }
   },
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "create-tables": "babel-node ./db/dbConnection createAllTables",
     "start": "node ./server/index.js",
