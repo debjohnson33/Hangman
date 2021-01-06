@@ -2,7 +2,7 @@
 
 ## Hangman
 
-![hangman](https://github.com/debjohnson33/Hangman/presentationImages/hangman_game.png?raw='true')
+![hangman](./presentationImages/hangman_game.png?raw='true')
 
 This is a hangman game where you try to guess the word one letter at a time. If you get the letter wrong, the 'hangman' picture will have a body part added. You can guess wrong 8 times and then the 'hangman' will be completely drawn and you 'lose' for that word.
 
