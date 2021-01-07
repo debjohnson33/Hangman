@@ -1,5 +1,5 @@
 #main {
-  background-color: lightblue;
+  background-color: #11479C;
   margin: auto;
   width: 75%;
   padding: 20px;
@@ -84,7 +84,7 @@ div.form {
 }
 
 .word {
-  background-color: lightyellow;
+  background-color: #FCFF61;
   color: blue;
   text-align: center;
   display: block;
