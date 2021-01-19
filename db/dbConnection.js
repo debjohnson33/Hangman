@@ -1,6 +1,6 @@
-import pool from './pool';
+import client from './pool';
 
-pool.on('connect', () => {
+client.on('connect', () => {
   console.log('Connected to hangman db');
 });
 
@@ -9,54 +9,54 @@ pool.on('connect', () => {
 const createUserTable = () => {
   const userCreateQuery = `CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, username VARCHAR(100) UNIQUE NOT NULL, score integer DEFAULT 0 NOT NULL, created_on DATE NOT NULL DEFAULT CURRENT_DATE)`;
 
-  pool.query(userCreateQuery)
+  client.query(userCreateQuery)
     .then((res) => {
       console.log(res);
-      pool.end();
+      client.end();
     })
     .catch((err) => {
       console.log(err);
-      pool.end();
+      client.end();
     });
 };
 
 const createWordTable = () => {
   const wordCreateQuery = `CREATE TABLE IF NOT EXISTS words (id SERIAL PRIMARY KEY, word VARCHAR(100) NOT NULL, difficulty VARCHAR(10) NOT NULL, created_on DATE NOT NULL DEFAULT CURRENT_DATE)`;
 
-  pool.query(wordCreateQuery)
+  client.query(wordCreateQuery)
     .then((res) => {
       console.log(res);
-      pool.end();
+      client.end();
     })
     .catch((err) => {
       console.log(err);
-      pool.end();
+      client.end();
     });
 };
 
 const dropUserTable = () => {
   const usersDropQuery = 'DROP TABLE IF EXISTS users';
-  pool.query(usersDropQuery)
+  client.query(usersDropQuery)
     .then((res) => {
       console.log(res);
-      pool.end();
+      client.end();
     })
     .catch((err) => {
       console.log(err);
-      pool.end();
+      client.end();
     });
 };
 
 const dropWordTable = () => {
   const wordsDropQuery = 'DROP TABLE IF EXISTS words';
-  pool.query(wordsDropQuery)
+  client.query(wordsDropQuery)
     .then((res) => {
       console.log(res);
-      pool.end();
+      client.end();
     })
     .catch((err) => {
       console.log(err);
-      pool.end();
+      client.end();
     });
 };
 
@@ -65,19 +65,20 @@ const createAllTables = () => {
   createWordTable();
 };
 
-const dropAllTables = () => {
-  dropUserTable();
-  dropWordTable();
-};
+createAllTables();
+// const dropAllTables = () => {
+//   dropUserTable();
+//   dropWordTable();
+// };
 
-pool.on('remove', () => {
-  console.log('removed');
-  process.exit(0);
-});
+// client.on('remove', () => {
+//   console.log('removed');
+//   process.exit(0);
+// });
 
-export {
-  createAllTables,
-  dropAllTables
-};
+// export {
+//   createAllTables,
+//   dropAllTables
+// };
 
 require('make-runnable');

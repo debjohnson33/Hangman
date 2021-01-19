@@ -1,18 +1,25 @@
-const { Pool } = require('pg');
+const { Client } = require('pg');
 const dotenv = require('dotenv');
 dotenv.config();
 
-//const databaseConfig = { connectionString: process.env.DATABASE_URL };
-const pool = new Pool({
-  user: 'debjohnson',
-  host: 'localhost',
-  database: 'hangman',
-  port: 5432
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
+
+client.connect();
+// const pool = new Pool({
+//   user: 'debjohnson',
+//   host: 'localhost',
+//   database: 'hangman',
+//   port: 5432
+// });
 
 const getUser = (username, callback) => {
   const getUserQuery = `SELECT * FROM users WHERE username = '${username}';`;
-  pool.query(getUserQuery, (err, res) => {
+  client.query(getUserQuery, (err, res) => {
     if (err) {
       callback(err);
     } else {
@@ -23,7 +30,7 @@ const getUser = (username, callback) => {
 
 const getUserScore = (username, callback) => {
   const getUserScoreQuery = `SELECT score FROM users WHERE username = '${username}';`;
-  pool.query(getUserScoreQuery, (err, res) => {
+  client.query(getUserScoreQuery, (err, res) => {
     if (err) {
       callback(err);
     } else {
@@ -34,7 +41,7 @@ const getUserScore = (username, callback) => {
 
 const getWords = (difficulty, callback) => {
   const getWordsQuery = `SELECT * FROM words WHERE difficulty = '${difficulty}'`;
-  pool.query(getWordsQuery, (err, res) => {
+  client.query(getWordsQuery, (err, res) => {
     if (err) {
       callback(err);
     } else {
@@ -45,7 +52,7 @@ const getWords = (difficulty, callback) => {
 
 const getAllWords = (callback) => {
   const getAllWordsQuery = `SELECT * FROM words;`;
-  pool.query(getAllWordsQuery, (err, res) => {
+  client.query(getAllWordsQuery, (err, res) => {
     if (err) {
       callback(err);
     } else {
@@ -57,7 +64,7 @@ const getAllWords = (callback) => {
 const addUser = (username, callback) => {
   const today = new Date().toISOString().slice(0,10);
   const addUserQuery = `INSERT INTO users(username, created_on) VALUES ('${username}', '${today}');`
-  pool.query(addUserQuery, (err, res) => {
+  client.query(addUserQuery, (err, res) => {
     if (err) {
       callback(err);
     } else {
@@ -69,7 +76,7 @@ const addUser = (username, callback) => {
 const updateUserScore = (username, score, callback) => {
   //score = parseInt(score, 10);
   const updateScoreQuery = `UPDATE users SET score = ${score} WHERE username = '${username}';`;
-  pool.query(updateScoreQuery, (err, res) => {
+  client.query(updateScoreQuery, (err, res) => {
     if (err) {
       callback(err);
     } else {
@@ -81,7 +88,7 @@ const updateUserScore = (username, score, callback) => {
 const addWord = (word, difficulty, callback) => {
   const today = new Date().toISOString().slice(0,10);
   const addWordQuery = `INSERT INTO words(word, difficulty, created_on) VALUES ('${word}', '${difficulty}', '${today}');`;
-  pool.query(addWordQuery, (err, res) => {
+  client.query(addWordQuery, (err, res) => {
     if (err) {
       callback(err);
     } else {
@@ -91,7 +98,7 @@ const addWord = (word, difficulty, callback) => {
 }
 
 module.exports = {
-  pool,
+  client,
   getUser,
   getUserScore,
   getWords,

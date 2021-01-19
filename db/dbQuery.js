@@ -1,9 +1,9 @@
-import pool from './pool';
+import client from './pool';
 
 export default {
   query(queryText, params) {
     return new Promise((resolve, reject) => {
-      pool.query(queryText, params)
+      client.query(queryText, params)
         .then((res) => {
           resolve(res);
         })
