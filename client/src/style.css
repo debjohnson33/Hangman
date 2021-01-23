@@ -22,6 +22,7 @@ div.form {
   display: block;
   width: 100%;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .login {
@@ -135,7 +136,7 @@ h1, h2 {
     text-decoration: none;
     font-family: 'Arimo', sans-serif;
     font-weight: 400;
-    font-size: small;
+    font-size: smaller;
     margin: 3px;
   }
 
@@ -143,15 +144,15 @@ h1, h2 {
     width: 45%;
     height: 45%;
     left: 50%;
-    margin: 3px;
-    padding: 5px;
+    margin: 2px;
+    padding: 4px;
     font-family: 'Arimo', sans-serif;
     font-weight: 400;
-    font-size: small;
+    font-size: smaller;
   }
 
-  #newuser, #username {
-    width: 40%;
+  input {
+    width: 50%;
   }
 }
 
