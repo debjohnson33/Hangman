@@ -119,6 +119,17 @@ h1, h2 {
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   /* adjustments for medium size screens */
+  #main {
+    height: 50vh;
+    width: 100%;
+  }
+}
+
+@media screen and (max-height: 640px) {
+  #main {
+    height: 50vh;
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -154,5 +165,6 @@ h1, h2 {
   input {
     width: 50%;
   }
+
 }
 
