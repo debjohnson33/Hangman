@@ -23,6 +23,12 @@ html {
   flex-flow: row wrap;
 }
 
+[class*="col-"] {
+  margin-left: 4%;
+  margin-bottom: 2%;
+  flex: 0 0 92%;
+}
+
 img {
   display: block;
   margin-left: auto;
@@ -94,7 +100,7 @@ div.form {
   justify-content: center;
 }
 
-/* .btn {
+.btn {
   border-radius: 12px;
   color: blue;
   padding: 10px;
@@ -104,7 +110,7 @@ div.form {
   font-weight: 400;
   font-size: large;
   margin: 5px;
-} */
+}
 
 .winner, .loser {
   color: darkslategrey;
@@ -119,14 +125,10 @@ div.form {
   color: blue;
   text-align: center;
   display: block;
-  margin-top: 15px;
-  margin-left: auto;
-  margin-right: auto;
-  height: 50%;
-  width: 50%;
   font-family: 'Arimo', sans-serif;
   font-weight: 400;
   font-size: medium;
+  flex: 0 0 100%;
 }
 
 .user {
@@ -170,6 +172,10 @@ h1, h2 {
     flex: 0 0 25%;
   }
 
+  .word {
+    flex: 0 0 50%;
+  }
+
 }
 
 @media screen and (min-width: 850px) {
@@ -187,18 +193,18 @@ h1, h2 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 35%;
+    width: 50%;
   }
   .login {
     margin: 2px;
     padding: 4px;
     font-family: 'Arimo', sans-serif;
     font-weight: 400;
-    font-size: small;
-    flex: 0 0 50%;
+    font-size: larger;
+    flex: 0 0 25%;
   }
 
   .btn {
-    flex: 0 0 20%;
+    flex: 0 0 10%;
   }
 }
