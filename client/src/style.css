@@ -23,17 +23,11 @@ html {
   flex-flow: row wrap;
 }
 
-[class*="col-"] {
-  margin-left: 4%;
-  margin-bottom: 2%;
-  flex: 0 0 92%;
-}
-
 img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
+  width: 80%;
 }
 
 .btn {
@@ -48,7 +42,6 @@ img {
   margin: 3px;
   flex: 0 0 100%
 }
-
 
 input {
   flex: 0 0 50%;
@@ -73,8 +66,9 @@ div.form {
   font-family: 'Arimo', sans-serif;
   font-weight: 400;
   font-size: large;
-  align-self: center;
-  flex: 0 0 100%;
+  margin-left: 4%;
+  margin-bottom: 2%;
+  flex: 0 0 92%;
 }
 
 #winnerModal {
@@ -95,7 +89,7 @@ div.form {
   top: 0;
   left: 0;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: center;
   justify-content: center;
 }
@@ -110,6 +104,9 @@ div.form {
   font-weight: 400;
   font-size: large;
   margin: 5px;
+  margin-left: 4%;
+  margin-bottom: 2%;
+  flex: 0 0 92%;
 }
 
 .winner, .loser {
@@ -132,50 +129,60 @@ div.form {
 }
 
 .user {
-  display: flex;
-  justify-content: space-around;
-  margin: 5px;
+  margin: 2%;
   font-family: 'Arimo', sans-serif;
   font-weight: 700;
-  font-size: large;
+  font-size: medium;
 }
 
 h1, h2 {
   font-family: 'Arimo', sans-serif;
   font-weight: 400;
+  font-size: larger;
 }
 
 
 @media screen and (min-width: 550px) {
   /* adjustments for medium size screens */
 
-  #main {
-    flex-flow: row nowrap;
-  }
   img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 40%;
+    width: 60%;
   }
 
   .login {
-    margin: 2px;
     padding: 4px;
     font-family: 'Arimo', sans-serif;
     font-weight: 400;
-    font-size: small;
+    font-size: large;
+    margin-left: 10%;
+    margin-bottom: 5%;
     flex: 0 0 50%;
   }
 
   .btn {
-    flex: 0 0 25%;
+    margin-left: 10%;
+    margin-bottom: 5%;
+    flex: 0 0 20%;
   }
 
   .word {
     flex: 0 0 50%;
   }
 
+  .column {
+    flex: 0 0 20%;
+  }
+
+  .user {
+    margin: 2%;
+    font-family: 'Arimo', sans-serif;
+    font-weight: 700;
+    font-size: large;
+    flex: 0 0 20%;
+  }
 }
 
 @media screen and (min-width: 850px) {
@@ -193,18 +200,38 @@ h1, h2 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 45%;
   }
   .login {
-    margin: 2px;
     padding: 4px;
     font-family: 'Arimo', sans-serif;
     font-weight: 400;
     font-size: larger;
+    margin-left: 20%;
+;
     flex: 0 0 25%;
   }
 
   .btn {
     flex: 0 0 10%;
+  }
+
+  .column {
+    flex: 0 0 30%;
+  }
+
+  .loginColumn {
+    flex: 0 0 25%;
+  }
+  .user {
+    margin: 5% 10% 5% 10%;
+    font-family: 'Arimo', sans-serif;
+    font-weight: 700;
+    font-size: large;
+    flex: 0 0 40%;
+  }
+
+  .h1 {
+    font-size: x-large;
   }
 }

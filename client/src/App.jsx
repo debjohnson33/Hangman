@@ -187,16 +187,19 @@ class App extends React.Component {
         return <LoginForm onLogin={this.onLogin.bind(this)} />
       } else {
         return (
-          <div className={styles.user} >
-            <div>
-              User: {user.username}
+          <div>
+            <div className={styles.user} >
+              <div>
+                User: {user.username}
+              </div>
+              <div>
+                Score: {this.state.currentScore}
+              </div>
+              <div>
+                High Score: {user.score}
+              </div>
             </div>
-            <div>
-              Score: {this.state.currentScore}
-            </div>
-            <div>
-              High Score: {user.score}
-            </div>
+            <div className={styles.loginColumn}></div>
           </div>
         )
       }
@@ -223,6 +226,7 @@ class App extends React.Component {
           {(Object.keys(this.state.currentUser).length === 0) &&
           (<button className={styles.btn} onClick={this.signUpClick}>Click here to Signup</button>)
           }
+          <div className={styles.column}></div>
           <HangmanPic pic={this.state.currentPic} />
           {renderWord()}
           {renderModal()}
