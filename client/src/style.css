@@ -200,7 +200,7 @@ h1, h2 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 45%;
+    width: 35%;
   }
   .login {
     padding: 4px;
@@ -208,7 +208,6 @@ h1, h2 {
     font-weight: 400;
     font-size: larger;
     margin-left: 20%;
-;
     flex: 0 0 25%;
   }
 
@@ -216,22 +215,22 @@ h1, h2 {
     flex: 0 0 10%;
   }
 
-  .column {
-    flex: 0 0 30%;
-  }
-
-  .loginColumn {
-    flex: 0 0 25%;
-  }
   .user {
-    margin: 5% 10% 5% 10%;
+    display: flex;
+    justify-content: space-between;
+    margin: 5%;
     font-family: 'Arimo', sans-serif;
     font-weight: 700;
     font-size: large;
-    flex: 0 0 40%;
+    flex: 0 0 90%;
   }
 
   .h1 {
     font-size: x-large;
+  }
+
+  .wordContainer {
+    margin: 5% 10% 5% 10%;
+    flex: 0 0 60%;
   }
 }
