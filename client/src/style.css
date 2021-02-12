@@ -133,10 +133,11 @@ div.form {
 }
 
 .user {
-  margin: 2%;
+  margin: 1% 2% 1% 2%;
   font-family: 'Arimo', sans-serif;
   font-weight: 700;
   font-size: medium;
+  flex: 0 0 96%;
 }
 
 h1, h2 {
@@ -151,9 +152,9 @@ h1, h2 {
 
   img {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 400px;
   }
 
   .login {
@@ -181,11 +182,11 @@ h1, h2 {
   }
 
   .user {
-    margin: 2%;
+    margin: 1% 5% 1 5%;
     font-family: 'Arimo', sans-serif;
     font-weight: 700;
     font-size: large;
-    flex: 0 0 20%;
+    flex: 0 0 30%;
   }
 }
 
@@ -202,9 +203,9 @@ h1, h2 {
 
   img {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 35%;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 400px;
   }
   .login {
     padding: 4px;
@@ -222,7 +223,7 @@ h1, h2 {
   .user {
     display: flex;
     justify-content: space-between;
-    margin: 5%;
+    margin: 1% 5% 1% 5%;
     font-family: 'Arimo', sans-serif;
     font-weight: 700;
     font-size: large;
@@ -234,7 +235,7 @@ h1, h2 {
   }
 
   .wordContainer {
-    margin: 5% 10% 5% 10%;
+    margin: 1% 10% 1% 10%;
     flex: 0 0 60%;
   }
 }
