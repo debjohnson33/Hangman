@@ -58,7 +58,7 @@ class Word extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.wordContainer} >
         <p className={styles.word} >
           {this.state.wordDisplay}
         </p>

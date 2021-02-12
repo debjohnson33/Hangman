@@ -30,6 +30,7 @@ class LoginForm extends React.Component {
         <form onSubmit={this.submit.bind(this)} >
           <p>Username:</p>
           <input
+            id="username"
             type="text"
             name="username"
             value={this.state.user}

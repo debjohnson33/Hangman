@@ -1,43 +1,74 @@
+/* Border box declaration
+https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+html {
+  box-sizing: border-box;
+}
+/* inherit border-box on all elements in the universe and before and after
+ */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 #main {
   background-color: lightblue;
   margin: auto;
-  width: 75%;
   padding: 20px;
   border: 3px solid green;
 }
 
-h1 {
-  text-align: center;
+.row {
+  display: flex;
+  flex-flow: row wrap;
 }
 
 img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  height: 50%;
-  width: 50%;
+  width: 80%;
+}
+
+.btn {
+  border-radius: 12px;
+  color: blue;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 400;
+  font-size: larger;
+  margin: 3px;
+  flex: 0 0 100%
+}
+
+input {
+  flex: 0 0 50%;
+}
+
+h1 {
+  text-align: center;
+  align-self: center;
 }
 
 div.form {
-  display: block;
-  width: 100%;
   text-align: center;
 }
 
 .login {
-  display: inline-block;
   text-align: left;
-  width: 50%;
-  height: 50%;
   background-color: lightgray;
   border: 2px solid green;
   border-radius: 10px;
-  left: 50%;
-  margin: 5px;
-  padding: 10px;
+  margin: 3px;
+  padding: 5px;
   font-family: 'Arimo', sans-serif;
   font-weight: 400;
-  font-size: medium;
+  font-size: large;
+  margin-left: 4%;
+  margin-bottom: 2%;
+  flex: 0 0 92%;
 }
 
 #winnerModal {
@@ -58,7 +89,7 @@ div.form {
   top: 0;
   left: 0;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: center;
   justify-content: center;
 }
@@ -73,6 +104,13 @@ div.form {
   font-weight: 400;
   font-size: large;
   margin: 5px;
+  margin-left: 4%;
+  margin-bottom: 2%;
+  flex: 0 0 92%;
+}
+
+.modal .btn {
+  flex: 0 0 30%;
 }
 
 .winner, .loser {
@@ -88,26 +126,116 @@ div.form {
   color: blue;
   text-align: center;
   display: block;
-  margin-top: 15px;
-  margin-left: auto;
-  margin-right: auto;
-  height: 50%;
-  width: 50%;
   font-family: 'Arimo', sans-serif;
   font-weight: 400;
   font-size: medium;
+  flex: 0 0 100%;
 }
 
 .user {
-  display: flex;
-  justify-content: space-around;
-  margin: 5px;
+  margin: 1% 2% 1% 2%;
   font-family: 'Arimo', sans-serif;
   font-weight: 700;
-  font-size: large;
+  font-size: medium;
+  flex: 0 0 96%;
 }
 
 h1, h2 {
   font-family: 'Arimo', sans-serif;
   font-weight: 400;
+  font-size: larger;
+}
+
+
+@media screen and (min-width: 550px) {
+  /* adjustments for medium size screens */
+
+  img {
+    display: block;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 400px;
+  }
+
+  .login {
+    padding: 4px;
+    font-family: 'Arimo', sans-serif;
+    font-weight: 400;
+    font-size: large;
+    margin-left: 10%;
+    margin-bottom: 5%;
+    flex: 0 0 50%;
+  }
+
+  .btn {
+    margin-left: 10%;
+    margin-bottom: 5%;
+    flex: 0 0 20%;
+  }
+
+  .word {
+    flex: 0 0 50%;
+  }
+
+  .column {
+    flex: 0 0 20%;
+  }
+
+  .user {
+    margin: 1% 5% 1 5%;
+    font-family: 'Arimo', sans-serif;
+    font-weight: 700;
+    font-size: large;
+    flex: 0 0 30%;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  /* put in adjustments if needed for bigger screens */
+
+  #main {
+    flex-flow: row nowrap;
+  }
+
+  .row {
+    justify-content: space-around;
+  }
+
+  img {
+    display: block;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 400px;
+  }
+  .login {
+    padding: 4px;
+    font-family: 'Arimo', sans-serif;
+    font-weight: 400;
+    font-size: larger;
+    margin-left: 20%;
+    flex: 0 0 25%;
+  }
+
+  .btn {
+    flex: 0 0 10%;
+  }
+
+  .user {
+    display: flex;
+    justify-content: space-between;
+    margin: 1% 5% 1% 5%;
+    font-family: 'Arimo', sans-serif;
+    font-weight: 700;
+    font-size: large;
+    flex: 0 0 90%;
+  }
+
+  .h1 {
+    font-size: x-large;
+  }
+
+  .wordContainer {
+    margin: 1% 10% 1% 10%;
+    flex: 0 0 60%;
+  }
 }

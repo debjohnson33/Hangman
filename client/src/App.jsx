@@ -218,13 +218,15 @@ class App extends React.Component {
     return (
       <div id={styles.main}>
         <h1>Welcome to Hangman!</h1>
-        {renderUserLogin()}
-        {(Object.keys(this.state.currentUser).length === 0) &&
-        (<button className={styles.btn} onClick={this.signUpClick}>Click here to Signup</button>)
-        }
-        <HangmanPic pic={this.state.currentPic} />
-        {renderWord()}
-        {renderModal()}
+        <div className={styles.row}>
+          {renderUserLogin()}
+          {(Object.keys(this.state.currentUser).length === 0) &&
+          (<button className={styles.btn} onClick={this.signUpClick}>Click here to Signup</button>)
+          }
+          <HangmanPic pic={this.state.currentPic} />
+          {renderWord()}
+          {renderModal()}
+        </div>
       </div>
     )
   }
