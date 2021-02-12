@@ -109,6 +109,10 @@ div.form {
   flex: 0 0 92%;
 }
 
+.modal .btn {
+  flex: 0 0 30%;
+}
+
 .winner, .loser {
   color: darkslategrey;
   background-color: lightyellow;
