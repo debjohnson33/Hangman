@@ -48,7 +48,7 @@ class Word extends React.Component {
     if (matches === null) {
       this.props.changePic();
     } else {
-      this.setState({wordDisplay: this.putLetterIn(this.state.wordDisplay.split(' '), letter)}, () => {
+      this.setState({wordDisplay: this.putLetterIn(this.state.wordDisplay.split(' '), letter.toLowerCase())}, () => {
         this.checkIfWinner();
       }
       );
