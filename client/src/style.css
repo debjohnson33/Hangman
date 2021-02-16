@@ -89,7 +89,7 @@ div.form {
   top: 0;
   left: 0;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column;
   align-items: center;
   justify-content: center;
 }
@@ -109,16 +109,21 @@ div.form {
   flex: 0 0 92%;
 }
 
-.modal .btn {
-  flex: 0 0 30%;
-}
-
 .winner, .loser {
   color: darkslategrey;
+  text-align: center;
   background-color: lightyellow;
   font-family: 'Arimo', sans-serif;
   font-weight: 700;
   font-size: large;
+  padding: 3px;
+  flex: 0 0 3%;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .word {
@@ -217,7 +222,15 @@ h1, h2 {
   }
 
   .btn {
+    margin-left: 5%;
+    margin-bottom: 2%;
     flex: 0 0 10%;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
   }
 
   .user {

@@ -6,8 +6,10 @@ function WinnerModal({onQuit, onNextWord}) {
   return (
     <div className={styles.modal}>
       <h2 className={styles.winner}>WINNER!</h2>
-      <button className={styles.btn} onClick={onQuit} >Quit Game</button>
-      <button className={styles.btn} onClick={onNextWord} >Next Word</button>
+      <div className={styles.buttons}>
+        <button className={styles.btn} onClick={onQuit} >Quit Game</button>
+        <button className={styles.btn} onClick={onNextWord} >Next Word</button>
+      </div>
     </div>
   )
 }
