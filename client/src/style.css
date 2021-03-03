@@ -28,7 +28,6 @@ img {
 }
 
 .btn {
-  border-radius: 12px;
   color: blue;
   padding: 5px;
   text-align: center;
@@ -90,7 +89,6 @@ div.form {
 }
 
 .btn {
-  border-radius: 12px;
   color: blue;
   padding: 10px;
   text-align: center;
