@@ -24,6 +24,11 @@ class LoginForm extends React.Component {
     });
   }
 
+  signUp(e) {
+    e.preventDefault();
+    this.props.onSignUp(e);
+  }
+
   render() {
     return (
       <div className={styles.login}>
@@ -37,6 +42,7 @@ class LoginForm extends React.Component {
             onChange={this.handleChange}
           />
           <input className={styles.btn} type="submit" value="Login" />
+          <button className={styles.btn} onClick={this.signUp.bind(this)}>Click here to Signup</button>
         </form>
       </div>
     )

@@ -23,7 +23,6 @@ class App extends React.Component {
       showWinner: false,
       showLoser: false
     }
-    this.signUpClick = this.signUpClick.bind(this);
   }
 
   componentDidMount() {
@@ -184,7 +183,7 @@ class App extends React.Component {
       if (signUpClicked) {
         return <UserForm onSubmit={this.onSubmit.bind(this)} />
       } else if (Object.keys(this.state.currentUser).length === 0) {
-        return <LoginForm onLogin={this.onLogin.bind(this)} />
+        return <LoginForm onLogin={this.onLogin.bind(this)} onSignUp={this.signUpClick.bind(this)} />
       } else {
         return (
           <div className={styles.user} >
@@ -220,9 +219,6 @@ class App extends React.Component {
         <h1>Welcome to Hangman!</h1>
         <div className={styles.row}>
           {renderUserLogin()}
-          {(Object.keys(this.state.currentUser).length === 0) &&
-          (<button className={styles.btn} onClick={this.signUpClick}>Click here to Signup</button>)
-          }
           <HangmanPic pic={this.state.currentPic} />
           {renderWord()}
           {renderModal()}
