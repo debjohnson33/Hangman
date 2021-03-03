@@ -11,11 +11,8 @@ html {
   box-sizing: inherit;
 }
 
-#main {
-  background-color: lightblue;
-  margin: auto;
-  padding: 20px;
-  border: 3px solid green;
+body {
+  background-color: rgb(182, 204, 201);
 }
 
 .row {
@@ -59,8 +56,6 @@ div.form {
 .login {
   text-align: left;
   background-color: lightgray;
-  border: 2px solid green;
-  border-radius: 10px;
   margin: 3px;
   padding: 5px;
   font-family: 'Arimo', sans-serif;
