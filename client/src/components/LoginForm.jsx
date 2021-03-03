@@ -33,17 +33,17 @@ class LoginForm extends React.Component {
     return (
       <div className={styles.login}>
         <form onSubmit={this.submit.bind(this)} >
-          <p>Username:</p>
           <input
             id="username"
             type="text"
             name="username"
+            placeholder="username"
             value={this.state.user}
             onChange={this.handleChange}
           />
           <input className={styles.btn} type="submit" value="Login" />
-          <button className={styles.btn} onClick={this.signUp.bind(this)}>Click here to Signup</button>
         </form>
+        <button className={styles.btn} onClick={this.signUp.bind(this)}>Signup</button>
       </div>
     )
   }

@@ -28,19 +28,11 @@ img {
 }
 
 .btn {
-  color: blue;
-  padding: 5px;
   text-align: center;
   text-decoration: none;
   font-family: 'Arimo', sans-serif;
   font-weight: 400;
-  font-size: larger;
-  margin: 3px;
-  flex: 0 0 100%
-}
-
-input {
-  flex: 0 0 50%;
+  font-size: small;
 }
 
 h1 {
@@ -48,21 +40,17 @@ h1 {
   align-self: center;
 }
 
-div.form {
-  text-align: center;
-}
-
 .login {
-  text-align: left;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
   background-color: lightgray;
   margin: 3px;
   padding: 5px;
   font-family: 'Arimo', sans-serif;
   font-weight: 400;
   font-size: large;
-  margin-left: 4%;
-  margin-bottom: 2%;
-  flex: 0 0 92%;
+  margin: 2%;
 }
 
 #winnerModal {
@@ -86,20 +74,6 @@ div.form {
   flex-flow: column;
   align-items: center;
   justify-content: center;
-}
-
-.btn {
-  color: blue;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  font-family: 'Arimo', sans-serif;
-  font-weight: 400;
-  font-size: large;
-  margin: 5px;
-  margin-left: 4%;
-  margin-bottom: 2%;
-  flex: 0 0 92%;
 }
 
 .winner, .loser {
@@ -156,19 +130,14 @@ h1, h2 {
   }
 
   .login {
-    padding: 4px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
     font-family: 'Arimo', sans-serif;
     font-weight: 400;
     font-size: large;
     margin-left: 10%;
     margin-bottom: 5%;
-    flex: 0 0 50%;
-  }
-
-  .btn {
-    margin-left: 10%;
-    margin-bottom: 5%;
-    flex: 0 0 20%;
   }
 
   .word {
@@ -192,7 +161,7 @@ h1, h2 {
   /* put in adjustments if needed for bigger screens */
 
   #main {
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
   }
 
   .row {
@@ -206,18 +175,17 @@ h1, h2 {
     width: 400px;
   }
   .login {
-    padding: 4px;
+    padding: 1%;
     font-family: 'Arimo', sans-serif;
     font-weight: 400;
     font-size: larger;
-    margin-left: 20%;
-    flex: 0 0 25%;
+    margin: 2% 10% 2% 10%;
+    flex: 0 0 40%;
   }
 
   .btn {
     margin-left: 5%;
     margin-bottom: 2%;
-    flex: 0 0 10%;
   }
 
   .buttons {

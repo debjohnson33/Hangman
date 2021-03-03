@@ -216,7 +216,7 @@ class App extends React.Component {
     }
     return (
       <div id={styles.main}>
-        <h1>Welcome to Hangman!</h1>
+        <h1>HANGMAN</h1>
         <div className={styles.row}>
           {renderUserLogin()}
           <HangmanPic pic={this.state.currentPic} />
