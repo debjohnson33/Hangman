@@ -219,6 +219,8 @@ class App extends React.Component {
         <h1>HANGMAN</h1>
         <div className={styles.row}>
           {renderUserLogin()}
+        </div>
+        <div className={styles.row}>
           <HangmanPic pic={this.state.currentPic} />
           {renderWord()}
           {renderModal()}
