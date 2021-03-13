@@ -26,13 +26,13 @@ class UserForm extends React.Component {
 
   render() {
     return (
-      <div className={styles.login}>
+      <div className={styles.user}>
         <form onSubmit={this.submit.bind(this)} >
-          <p>Type in your new username:</p>
           <input
             id="newuser"
             type="text"
             name="username"
+            placeholder="New Username"
             value={this.state.user}
             onChange={this.handleChange}
           />

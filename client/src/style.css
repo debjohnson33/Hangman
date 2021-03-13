@@ -105,6 +105,7 @@ h1 {
 }
 
 .user {
+  background-color: lightgray;
   margin: 1% 2% 1% 2%;
   font-family: 'Arimo', sans-serif;
   font-weight: 700;
@@ -191,8 +192,7 @@ h1, h2 {
   }
 
   .btn {
-    margin-left: 5%;
-    margin-bottom: 2%;
+    margin: 2%;
   }
 
   .buttons {
@@ -203,12 +203,17 @@ h1, h2 {
 
   .user {
     display: flex;
-    justify-content: space-between;
-    margin: 1% 5% 1% 5%;
+    justify-content: center;
+    margin: 2% 10% 2% 10%;
+    padding: 1%;
     font-family: 'Arimo', sans-serif;
     font-weight: 700;
     font-size: large;
-    flex: 0 0 90%;
+    flex: 0 0 40%;
+  }
+  .user form {
+    display: flex;
+    justify-content: center;
   }
 
   .h1 {
