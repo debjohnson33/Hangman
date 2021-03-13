@@ -118,7 +118,15 @@ h1 {
 .wordContainer {
   justify-content: center;
   margin: 1% 10% 1% 10%;
-  flex: 0 0 60%;
+  flex: 0 0 40%;
+}
+
+.wordContainer form {
+  display: flex;
+  justify-content: center;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 400;
+  font-size: small;
 }
 
 .user {
@@ -191,6 +199,16 @@ h1, h2 {
 
   .word {
     flex: 0 0 60%;
+  }
+  .wordContainer {
+    justify-content: center;
+    margin: 1% 10% 1% 10%;
+    flex: 0 0 40%;
+  }
+
+  .wordContainer form {
+    display: flex;
+    justify-content: center;
   }
 
   .column {
@@ -276,6 +294,6 @@ h1, h2 {
 
   .wordContainer {
     margin: 1% 10% 1% 10%;
-    flex: 0 0 60%;
+    flex: 0 0 40%;
   }
 }

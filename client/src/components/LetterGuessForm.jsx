@@ -30,10 +30,11 @@ class LetterGuessForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.submit.bind(this)}>
-        <h2>Type in One Letter:</h2>
+        <label htmlFor='letter'>Type One Letter:</label>
         <input
           type="text"
           name="letter"
+          id="letter"
           onChange={this.handleChange}
           value={this.state.letter}
         />
