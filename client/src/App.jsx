@@ -186,16 +186,16 @@ class App extends React.Component {
         return <LoginForm onLogin={this.onLogin.bind(this)} onSignUp={this.signUpClick.bind(this)} />
       } else {
         return (
-          <div className={styles.user} >
-            <div>
+          <div id={styles.userInfo} >
+            <p>
               User: {user.username}
-            </div>
-            <div>
+            </p>
+            <p>
               Score: {this.state.currentScore}
-            </div>
-            <div>
+            </p>
+            <p>
               High Score: {user.score}
-            </div>
+            </p>
           </div>
         )
       }

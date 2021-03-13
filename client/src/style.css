@@ -18,6 +18,13 @@ body {
 .row {
   display: flex;
   flex-flow: row wrap;
+}
+
+.row .user {
+  justify-content: center;
+}
+
+.row .login {
   justify-content: center;
 }
 
@@ -100,14 +107,18 @@ h1 {
 }
 
 .word {
-  background-color: lightyellow;
-  color: blue;
+  color: rgb(13, 13, 116);
   text-align: center;
   display: block;
   font-family: 'Arimo', sans-serif;
   font-weight: 400;
-  font-size: medium;
+  font-size: x-large;
   flex: 0 0 100%;
+}
+.wordContainer {
+  justify-content: center;
+  margin: 1% 10% 1% 10%;
+  flex: 0 0 60%;
 }
 
 .user {
@@ -124,6 +135,19 @@ h1 {
 .user form {
   display: flex;
   justify-content: center;
+}
+
+#userInfo {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  flex: 0 0 30%;
+  background-color: lightgray;
+  margin: 1%;
+  padding: 1%;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 400;
+  font-size: small;
 }
 
 h1, h2 {
@@ -166,7 +190,7 @@ h1, h2 {
   }
 
   .word {
-    flex: 0 0 50%;
+    flex: 0 0 60%;
   }
 
   .column {
